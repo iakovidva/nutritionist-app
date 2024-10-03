@@ -3,14 +3,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <!-- Project from https://start.vaadin.com/project/94852b84-7f38-4ec9-9aa6-822c0d41500d -->
-    <groupId>com.example.application</groupId>
-    <artifactId>my-hilla-app</artifactId>
-    <name>my-hilla-app</name>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.vaiak.app</groupId>
+    <artifactId>nutritionist-app</artifactId>
+    <name>nutritionist-app</name>
+    <version>0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>17</java.version>
         <vaadin.version>24.4.13</vaadin.version>
     </properties>
 
