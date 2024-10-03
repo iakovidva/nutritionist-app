@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec45d52b-35ec-4d63-ac3b-71514c1ba507" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutritionist-app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/nutritionist-app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/frontend/views/about.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/frontend/views/about.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +27,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2mvPaWBjAc3eaSrAAExblYRn57d" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -52,7 +53,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "ts.external.directory.path": "C:\\Users\\vaiak\\Documents\\my-hilla-app\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\vaiak\\Documents\\nutritionist-app\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -95,6 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1727954141038</updated>
       <workItem from="1727954142253" duration="1821000" />
+      <workItem from="1727956037872" duration="2094000" />
     </task>
     <servers />
   </component>
