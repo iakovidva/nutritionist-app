@@ -1,14 +1,14 @@
 import {ViewConfig} from '@vaadin/hilla-file-router/types.js';
 import {MessageService} from 'Frontend/generated/endpoints.js';
 import {ChangeEvent, useEffect, useState} from "react";
-import DietaryPreferencesForm from "Frontend/views/components/Questionnaire/DietaryPreferencesForm";
+import DietaryPreferencesForm from "Frontend/themes/my-hilla-app/components/Questionnaire/DietaryPreferencesForm";
 
 export const config: ViewConfig = {
-    menu: {order: 2, icon: 'line-awesome/svg/globe-solid.svg'},
+    menu: {order: 5, icon: 'line-awesome/svg/globe-solid.svg'},
     title: 'Testing View',
 };
 
-export default function HelloWorldView() {
+export default function TestingView() {
     const [question, setQuestion] = useState<string>('');
 
     // Use useEffect to fetch data when the component mounts
