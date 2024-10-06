@@ -11,7 +11,7 @@ public class HelloWorldService {
 
     public String sayHello(String name) {
         if (name.isEmpty()) {
-            return "Hello stranger";
+            return "Hello stranger :)";
         } else {
             return "Hello " + name;
         }
