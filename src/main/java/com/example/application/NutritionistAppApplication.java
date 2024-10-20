@@ -1,4 +1,4 @@
-package com.vaiak.app.nutritionist_app;
+package com.example.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
