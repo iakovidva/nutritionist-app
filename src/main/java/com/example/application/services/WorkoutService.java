@@ -2,22 +2,16 @@ package com.example.application.services;
 
 import com.example.application.model.Workout;
 import com.example.application.repository.WorkoutRepo;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
-import com.vaadin.hilla.BrowserCallable;
-import com.vaadin.hilla.Endpoint;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@BrowserCallable
-@AnonymousAllowed
 @Service
 public class WorkoutService {
 
-    @Autowired
-    WorkoutRepo repo;
+    @Autowired private WorkoutRepo repo;
 
     private Random rand = new Random();
 

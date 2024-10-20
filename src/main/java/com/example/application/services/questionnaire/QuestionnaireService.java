@@ -1,9 +1,9 @@
 package com.example.application.services.questionnaire;
 
 import com.example.application.repository.questionnaire.QuestionnaireRepository;
-import com.vaadin.hilla.BrowserCallable;
+import org.springframework.stereotype.Service;
 
-@BrowserCallable
+@Service
 public class QuestionnaireService {
 
     private QuestionnaireRepository questionnaireRepository;

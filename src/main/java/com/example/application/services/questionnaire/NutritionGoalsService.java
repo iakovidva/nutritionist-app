@@ -1,9 +1,9 @@
 package com.example.application.services.questionnaire;
 
 import com.example.application.repository.questionnaire.NutritionGoalsRepository;
-import com.vaadin.hilla.BrowserCallable;
+import org.springframework.stereotype.Service;
 
-@BrowserCallable
+@Service
 public class NutritionGoalsService {
 
     private NutritionGoalsRepository nutritionGoalsRepository;
