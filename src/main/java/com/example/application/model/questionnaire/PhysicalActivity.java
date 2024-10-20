@@ -17,8 +17,11 @@ import lombok.NoArgsConstructor;
 @Entity(name = "PHYSICAL_ACTIVITY")
 public class PhysicalActivity extends QuestionnaireSection {
 
-    @Column(name = "exercises_regularly", nullable = false)
-    private Boolean exercisesRegularly;
+    @Column(name = "exercise_frequency", nullable = false)
+    private WeeklyFrequency exerciseFrequency;
+
+    @Column(name = "usual_training_time")
+    private String usualTrainingTime;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "endurance_frequency")
@@ -38,7 +41,4 @@ public class PhysicalActivity extends QuestionnaireSection {
     @Enumerated(EnumType.STRING)
     @Column(name = "other_activity_frequency")
     private WeeklyFrequency otherActivityFrequency;
-
-    @Column(name = "usual_training_time")
-    private String usualTrainingTime;
 }

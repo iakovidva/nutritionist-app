@@ -1,7 +1,5 @@
 package com.example.application.model.questionnaire;
 
-import com.example.application.model.User;
-import com.example.application.model.common.WeeklyFrequency;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -11,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @Builder

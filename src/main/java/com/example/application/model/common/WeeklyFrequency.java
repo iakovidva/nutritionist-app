@@ -1,7 +1,5 @@
 package com.example.application.model.common;
 
-import com.vaadin.hilla.BrowserCallable;
-
 public enum WeeklyFrequency {
     LESS_THAN_ONCE_A_WEEK("< 1 a week"),
     ONCE_TO_TWICE_A_WEEK("1-2 a week"),

@@ -1,19 +1,14 @@
 package com.example.application.model.questionnaire;
 
-import com.example.application.model.User;
 import com.example.application.model.common.WeeklyFrequency;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @Builder
@@ -29,18 +24,15 @@ public class DietaryPreferences extends QuestionnaireSection {
     @Column(name = "avoided_foods")
     private String avoidedFoods;
 
-    @Column(name = "drinks_alcohol")
-    private Boolean drinksAlcohol;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private WeeklyFrequency alcoholFrequency;
-
     @Column(name = "has_allergy_or_intolerance", nullable = false)
     private Boolean hasAllergyOrIntolerance;
 
     @Column(name = "allergies_or_intolerances")
     private String alergiesOrIntolerances;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private WeeklyFrequency alcoholFrequency;
 
     public enum DietType {
         BALANCED_DIET,

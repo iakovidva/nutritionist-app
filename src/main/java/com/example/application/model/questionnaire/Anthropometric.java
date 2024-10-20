@@ -23,16 +23,6 @@ public class Anthropometric extends QuestionnaireSection {
     @Column(name = "waist_circumference")
     private int waistCircumference; //at the narrowest point for women - at the navel for men
 
-    @Column(name = "weight_goal")
-    private WeightGoal weightGoal;
-
     @Column(name = "recent_measures")
     private String recentMeasures;
-
-    public enum WeightGoal {
-        LOSS,
-        GAIN,
-        MAINTENANCE,
-        OTHER
-    }
 }

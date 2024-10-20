@@ -11,15 +11,16 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "HEALTH_MEDICAL_HISTORY")
-public class HealthAndMedicalHistory extends QuestionnaireSection {
+@Entity(name = "HEALTH_MEDICAL")
+public class HealthAndMedical extends QuestionnaireSection {
 
     @Column(name = "health_condition")
     private String healthCondition;
 
+    @Column(name = "dietary_supplements")
+    private String dietarySupplements;
+
     @Column(name = "lack_of_vitamins_or_minerals")
     private String lackOfVitaminsOrMinerals;
 
-    @Column(name = "dietary_supplements")
-    private String dietarySupplements;
 }
