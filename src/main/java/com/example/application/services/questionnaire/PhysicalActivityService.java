@@ -1,6 +1,6 @@
 package com.example.application.services.questionnaire;
 
-import com.example.application.repository.questionnaire.PhysicalActivityRepository;
+import com.example.application.repositories.questionnaire.PhysicalActivityRepository;
 import org.springframework.stereotype.Service;
 
 @Service

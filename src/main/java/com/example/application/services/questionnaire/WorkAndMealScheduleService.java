@@ -1,6 +1,6 @@
 package com.example.application.services.questionnaire;
 
-import com.example.application.repository.questionnaire.WorkAndMealScheduleRepository;
+import com.example.application.repositories.questionnaire.WorkAndMealScheduleRepository;
 import org.springframework.stereotype.Service;
 
 @Service

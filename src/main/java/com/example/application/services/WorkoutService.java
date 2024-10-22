@@ -1,7 +1,7 @@
 package com.example.application.services;
 
-import com.example.application.model.Workout;
-import com.example.application.repository.WorkoutRepo;
+import com.example.application.models.Workout;
+import com.example.application.repositories.WorkoutRepo;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
