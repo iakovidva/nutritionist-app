@@ -10,24 +10,30 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h2 class="text-center">Questionnaire</h2>
-    <div class="progress mb-4">
-        <div class="progress-bar" role="progressbar"
-             th:style="'width: ' + (${currentStep ?: 1} / 8) * 100 + '%'"
-             aria-valuenow="${currentStep ?: 1}" aria-valuemin="1" aria-valuemax="8">
+    <div class="card shadow-lg">
+        <div class="card-header text-center bg-primary text-white">
+            <h2>Questionnaire</h2>
+        </div>
+        <div class="card-body">
+            <div class="progress mb-4">
+                <div class="progress-bar" role="progressbar"
+                     th:style="'width: ' + (${currentStep ?: 1} / 8) * 100 + '%'"
+                     aria-valuenow="${currentStep ?: 1}" aria-valuemin="1" aria-valuemax="8">
+                </div>
+            </div>
+            <form th:action="@{/questionnaire/submit}" th:object="${questionnaireData}" th:method="post">
+                <div th:replace="~{fragments/questionnaire-sections/step-anthropometric :: step}"></div>
+                <div th:replace="~{fragments/questionnaire-sections/step-demographic :: step}"></div>
+                <div th:replace="~{fragments/questionnaire-sections/step-dietary-preferences :: step}"></div>
+                <div th:replace="~{fragments/questionnaire-sections/step-health-medical :: step}"></div>
+                <div th:replace="~{fragments/questionnaire-sections/step-menstrual-cycle :: step}"></div>
+                <div th:replace="~{fragments/questionnaire-sections/step-physical-activity :: step}"></div>
+                <div th:replace="~{fragments/questionnaire-sections/step-nutrition-goals :: step}"></div>
+                <div th:replace="~{fragments/questionnaire-sections/step-work-meal-schedule :: step}"></div>
+                <div th:replace="~{fragments/questionnaire-sections/step-submission :: step}"></div>
+            </form>
         </div>
     </div>
-    <form th:action="@{/questionnaire/submit}" th:object="${questionnaireData}" th:method="post">
-        <div th:replace="~{fragments/questionnaire-sections/step-anthropometric :: step}"></div>
-        <div th:replace="~{fragments/questionnaire-sections/step-demographic :: step}"></div>
-        <div th:replace="~{fragments/questionnaire-sections/step-dietary-preferences :: step}"></div>
-        <div th:replace="~{fragments/questionnaire-sections/step-health-medical :: step}"></div>
-        <div th:replace="~{fragments/questionnaire-sections/step-menstrual-cycle :: step}"></div>
-        <div th:replace="~{fragments/questionnaire-sections/step-physical-activity :: step}"></div>
-        <div th:replace="~{fragments/questionnaire-sections/step-nutrition-goals :: step}"></div>
-        <div th:replace="~{fragments/questionnaire-sections/step-work-meal-schedule :: step}"></div>
-        <div th:replace="~{fragments/questionnaire-sections/step-submission :: step}"></div>
-    </form>
 </div>
 
 <!-- Include JavaScript -->

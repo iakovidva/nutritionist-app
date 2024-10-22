@@ -18,12 +18,5 @@
         <input type="text" class="form-control" id="timeframeToAchieve" name="timeframeToAchieve" placeholder="e.g., 3 months, 6 weeks" required>
     </div>
 
-    <div class="card-footer d-flex justify-content-between">
-        <button type="button" class="btn btn-secondary" onclick="previousStep()">
-            <i class="bi bi-arrow-left"></i> Previous
-        </button>
-        <button type="button" class="btn btn-primary" onclick="nextStep()">
-            Next <i class="bi bi-arrow-right"></i>
-        </button>
-    </div>
+    <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsMiddle}"></div>
 </div>

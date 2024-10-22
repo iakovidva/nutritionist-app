@@ -1,6 +1,8 @@
 <!-- fragments/step-demographic.html -->
 <div th:fragment="step" class="step" id="step-2" th:classappend="${currentStep == 2} ? 'active'">
     <h3>Demographic Information</h3>
+    <p th:text="'Current Step: ' + ${currentStep}"></p>
+
     <div class="mb-3">
         <label for="fullName" class="form-label">Full Name:</label>
         <input type="text" class="form-control" id="fullName" name="fullName" required>
@@ -23,12 +25,5 @@
             </option>
         </select>
     </div>
-    <div class="card-footer d-flex justify-content-between">
-        <button type="button" class="btn btn-secondary" onclick="previousStep()">
-            <i class="bi bi-arrow-left"></i> Previous
-        </button>
-        <button type="button" class="btn btn-primary" onclick="nextStep()">
-            Next <i class="bi bi-arrow-right"></i>
-        </button>
-    </div>
+    <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsMiddle}"></div>
 </div>

@@ -1,8 +1,6 @@
 <!-- fragments/step-anthropometric.html -->
-<div th:fragment="step" class="step card shadow-sm p-4 mb-3" id="step-1" th:classappend="${currentStep == 1} ? 'active'">
-    <h4 class="card-title">Anthropometric Information</h4>
-
-    <div class="card-body">
+<div th:fragment="step" class="step" id="step-1" th:classappend="${currentStep == 1} ? 'active'">
+    <h3>Anthropometric Information</h3>
         <div class="mb-2">
             <label for="height" class="form-label">Height (cm):</label>
             <input type="number" class="form-control" id="height" name="height" required>
@@ -19,13 +17,5 @@
             <label for="recentMeasures" class="form-label">Recent Measures:</label>
             <textarea class="form-control" id="recentMeasures" name="recentMeasures" rows="3"></textarea>
         </div>
-    </div>
-    <div class="card-footer d-flex justify-content-between">
-        <button type="button" class="btn btn-secondary" onclick="previousStep()">
-            <i class="bi bi-arrow-left"></i> Previous
-        </button>
-        <button type="button" class="btn btn-primary" onclick="nextStep()">
-            Next <i class="bi bi-arrow-right"></i>
-        </button>
-    </div>
+    <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsFirst}"></div>
 </div>
