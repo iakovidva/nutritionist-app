@@ -1,0 +1,7 @@
+.step {
+    display: none; /* Hide all steps by default */
+}
+
+.step.active {
+    display: block; /* Show the active step */
+}
