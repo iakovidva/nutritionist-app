@@ -1,0 +1,56 @@
+<!-- fragments/step-dietary-preferences.html -->
+<div th:fragment="step" class="step" id="step-3" th:classappend="${currentStep == 3} ? 'active'">
+    <h3>Dietary Preferences</h3>
+
+    <div class="mb-3">
+        <label for="dietType" class="form-label">Diet Type:</label>
+        <select class="form-control" id="dietType" name="dietType" required>
+            <option value="" disabled selected>Select type</option>
+            <option th:each="dietType : ${dietTypeOptions}"
+                    th:value="${dietType}"
+                    th:text="${dietType}">
+            </option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="avoidedFoods" class="form-label">Avoided Foods:</label>
+        <input type="text" class="form-control" id="avoidedFoods" name="avoidedFoods" placeholder="e.g., nuts, dairy">
+    </div>
+
+    <div class="mb-3">
+        <label for="hasAllergyOrIntolerance" class="form-label">Do you have any allergies or intolerances?</label>
+        <select class="form-control" id="hasAllergyOrIntolerance" name="hasAllergyOrIntolerance" required>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <div class="mb-3" id="allergyDetails" style="display: none;">
+        <label for="allergiesOrIntolerances" class="form-label">Please specify:</label>
+        <input type="text" class="form-control" id="allergiesOrIntolerances" name="allergiesOrIntolerances"
+               placeholder="e.g., gluten, lactose">
+    </div>
+
+    <div class="mb-3">
+        <label for="alcoholFrequency" class="form-label">How often do you consume alcohol?</label>
+        <select class="form-control" id="alcoholFrequency" name="alcoholFrequency" required>
+            <option value="" disabled selected>Select frequency</option>
+            <option th:each="frequency : ${weeklyFrequencyOptions}"
+                    th:value="${frequency}"
+                    th:text="${frequency.getDisplayName()}">
+            </option>
+        </select>
+    </div>
+
+    <button type="button" class="btn btn-secondary" onclick="previousStep()">Previous</button>
+    <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+</div>
+
+<script>
+    // Show or hide the allergy details based on user selection
+    document.getElementById('hasAllergyOrIntolerance').addEventListener('change', function () {
+        const allergyDetails = document.getElementById('allergyDetails');
+        allergyDetails.style.display = this.value === 'true' ? 'block' : 'none';
+    });
+</script>

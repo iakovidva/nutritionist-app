@@ -1,0 +1,28 @@
+<!-- fragments/step-demographic.html -->
+<div th:fragment="step" class="step" id="step-2" th:classappend="${currentStep == 2} ? 'active'">
+    <h3>Demographic Information</h3>
+    <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name:</label>
+        <input type="text" class="form-control" id="fullName" name="fullName" required>
+    </div>
+    <div class="mb-3">
+        <label for="birthday" class="form-label">Birthday:</label>
+        <input type="date" class="form-control" id="birthday" name="birthday" required>
+    </div>
+    <div class="mb-3">
+        <label for="occupation" class="form-label">Occupation:</label>
+        <input type="text" class="form-control" id="occupation" name="occupation">
+    </div>
+    <div class="mb-3">
+        <label for="gender" class="form-label">Gender:</label>
+        <select class="form-control" id="gender" name="gender" required>
+            <option value="" disabled selected>Select gender</option>
+            <option th:each="gender : ${genderOptions}"
+                    th:value="${gender}"
+                    th:text="${gender}">
+            </option>
+        </select>
+    </div>
+    <button type="button" class="btn btn-secondary" onclick="previousStep()">Previous</button>
+    <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+</div>

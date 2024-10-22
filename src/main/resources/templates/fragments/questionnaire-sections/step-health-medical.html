@@ -1,0 +1,22 @@
+<!-- fragments/step-health-medical.html -->
+<div th:fragment="step" class="step" id="step-4" th:classappend="${currentStep == 4} ? 'active'">
+    <h3>Health and Medical Information</h3>
+
+    <div class="mb-3">
+        <label for="healthCondition" class="form-label">Health Condition:</label>
+        <input type="text" class="form-control" id="healthCondition" name="healthCondition" placeholder="e.g., diabetes, hypertension">
+    </div>
+
+    <div class="mb-3">
+        <label for="dietarySupplements" class="form-label">Dietary Supplements:</label>
+        <input type="text" class="form-control" id="dietarySupplements" name="dietarySupplements" placeholder="e.g., multivitamin, omega-3">
+    </div>
+
+    <div class="mb-3">
+        <label for="lackOfVitaminsOrMinerals" class="form-label">Lack of Vitamins or Minerals:</label>
+        <input type="text" class="form-control" id="lackOfVitaminsOrMinerals" name="lackOfVitaminsOrMinerals" placeholder="e.g., vitamin D, iron">
+    </div>
+
+    <button type="button" class="btn btn-secondary" onclick="previousStep()">Previous</button>
+    <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+</div>

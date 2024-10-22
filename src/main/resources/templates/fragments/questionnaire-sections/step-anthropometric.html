@@ -1,0 +1,31 @@
+<!-- fragments/step-anthropometric.html -->
+<div th:fragment="step" class="step card shadow-sm p-4 mb-3" id="step-1" th:classappend="${currentStep == 1} ? 'active'">
+    <h4 class="card-title">Anthropometric Information</h4>
+
+    <div class="card-body">
+        <div class="mb-2">
+            <label for="height" class="form-label">Height (cm):</label>
+            <input type="number" class="form-control" id="height" name="height" required>
+        </div>
+        <div class="mb-2">
+            <label for="weight" class="form-label">Weight (kg):</label>
+            <input type="number" step="0.1" class="form-control" id="weight" name="weight" required>
+        </div>
+        <div class="mb-2">
+            <label for="waistCircumference" class="form-label">Waist Circumference (cm):</label>
+            <input type="number" class="form-control" id="waistCircumference" name="waistCircumference">
+        </div>
+        <div class="mb-2">
+            <label for="recentMeasures" class="form-label">Recent Measures:</label>
+            <textarea class="form-control" id="recentMeasures" name="recentMeasures" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" onclick="previousStep()">
+            <i class="bi bi-arrow-left"></i> Previous
+        </button>
+        <button type="button" class="btn btn-primary" onclick="nextStep()">
+            Next <i class="bi bi-arrow-right"></i>
+        </button>
+    </div>
+</div>
