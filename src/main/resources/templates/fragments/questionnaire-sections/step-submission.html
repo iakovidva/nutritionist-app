@@ -2,6 +2,13 @@
 <div th:fragment="step" class="step" id="step-9" th:classappend="${currentStep == 9} ? 'active'">
     <h3>Review & Submit</h3>
     <p>Review your information and click "Submit" when you are ready.</p>
-    <button type="button" class="btn btn-secondary" onclick="previousStep()">Previous</button>
-    <button type="submit" class="btn btn-success">Submit</button>
+
+    <div class="card-footer d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary" onclick="previousStep()">
+            <i class="bi bi-arrow-left"></i> Previous
+        </button>
+        <button type="submit" class="btn btn-success" onclick="nextStep()">
+            Submit <i class="bi bi-arrow-right"></i>
+        </button>
+    </div>
 </div>

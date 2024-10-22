@@ -5,3 +5,10 @@
 .step.active {
     display: block; /* Show the active step */
 }
+
+body {
+    background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+    background-attachment: fixed;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+}
