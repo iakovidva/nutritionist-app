@@ -1,5 +1,6 @@
 package com.example.application.models.questionnaire;
 
+import com.example.application.enums.Goals;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -17,20 +18,9 @@ import lombok.NoArgsConstructor;
 public class NutritionGoals extends QuestionnaireSection {
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "goal")
-    private Goal goal;
+    @Column(name = "goal", nullable = false)
+    private Goals goals;
 
     @Column(name = "timeframe_to_achieve")
     private String timeframeToAchieve;
-
-    public enum Goal {
-        HEALTH_IMPROVEMENT,
-        FAT_LOSS,
-        WEIGHT_LOSS,
-        GAIN_WEIGHT,
-        MUSCLE_MASS_INCREASE,
-        SPORTS_PERFORMANCE_IMPROVEMENT,
-        OTHER
-    }
-
 }

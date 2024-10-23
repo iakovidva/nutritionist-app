@@ -1,5 +1,6 @@
 package com.example.application.models.questionnaire;
 
+import com.example.application.enums.Gender;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -17,10 +18,10 @@ import lombok.NoArgsConstructor;
 @Entity(name = "DEMOGRAPHIC")
 public class Demographic extends QuestionnaireSection {
 
-    @Column(name = "full_name")
+    @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    @Column(name = "birthday")
+    @Column(name = "birthday", nullable = false)
     private LocalDate birthday;
 
     @Column(name = "occupation")
@@ -29,10 +30,4 @@ public class Demographic extends QuestionnaireSection {
     @Enumerated(EnumType.STRING)
     @Column(name = "gender", nullable = false)
     private Gender gender;
-
-    public enum Gender {
-        MALE,
-        FEMALE,
-        OTHER
-    }
 }

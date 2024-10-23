@@ -1,6 +1,7 @@
 package com.example.application.models.questionnaire;
 
-import com.example.application.models.common.WeeklyFrequency;
+import com.example.application.enums.DietTypes;
+import com.example.application.enums.WeeklyFrequency;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -19,7 +20,7 @@ public class DietaryPreferences extends QuestionnaireSection {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private DietType dietType;
+    private DietTypes dietTypes;
 
     @Column(name = "avoided_foods")
     private String avoidedFoods;
@@ -33,14 +34,4 @@ public class DietaryPreferences extends QuestionnaireSection {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private WeeklyFrequency alcoholFrequency;
-
-    public enum DietType {
-        BALANCED_DIET,
-        VEGETARIAN,
-        VEGAN,
-        PALEO,
-        KETOGENIC,
-        GLUTEN_FREE,
-        OTHER
-    }
 }

@@ -1,4 +1,4 @@
-package com.example.application.models.common;
+package com.example.application.enums;
 
 public enum WeeklyFrequency {
     LESS_THAN_ONCE_A_WEEK("< 1 a week"),
@@ -13,6 +13,6 @@ public enum WeeklyFrequency {
     }
 
     public String getDisplayName() {
-        return displayName;
+        return displayName; //used in thymeleaf
     }
 }

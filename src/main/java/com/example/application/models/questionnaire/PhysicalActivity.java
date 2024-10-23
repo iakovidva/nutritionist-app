@@ -1,6 +1,6 @@
 package com.example.application.models.questionnaire;
 
-import com.example.application.models.common.WeeklyFrequency;
+import com.example.application.enums.WeeklyFrequency;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity(name = "PHYSICAL_ACTIVITY")
 public class PhysicalActivity extends QuestionnaireSection {
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "exercise_frequency", nullable = false)
     private WeeklyFrequency exerciseFrequency;
 
