@@ -3,7 +3,7 @@
     <h3>Physical Activity</h3>
 
     <div class="mb-3">
-        <label for="exerciseFrequency" class="form-label">Exercise Frequency:</label>
+        <label for="exerciseFrequency" class="form-label">Exercise Frequency: <span class="text-danger">*</span></label>
         <select class="form-control" id="exerciseFrequency" name="exerciseFrequency" required>
             <option value="" disabled selected>Select frequency</option>
             <option th:each="frequency : ${weeklyFrequencyOptions}"

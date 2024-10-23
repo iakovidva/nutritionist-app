@@ -42,8 +42,8 @@ CREATE TABLE demographic
 (
     id               BIGSERIAL PRIMARY KEY,
     questionnaire_id BIGINT       NOT NULL,
-    full_name        varchar(255) NULL,
-    birthday         date         NULL,
+    full_name        varchar(255) NOT NULL,
+    birthday         date         NOT NULL,
     occupation       varchar(255) NULL,
     gender           GENDER_ENUM  NOT NULL,
     created_at       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,

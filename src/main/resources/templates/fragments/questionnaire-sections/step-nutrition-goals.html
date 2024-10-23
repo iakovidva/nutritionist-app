@@ -3,19 +3,25 @@
     <h3>Nutrition Goals</h3>
 
     <div class="mb-3">
-        <label for="goal" class="form-label">Select Your Goal:</label>
-        <select class="form-control" id="goal" name="goal" required>
-            <option value="" disabled selected>Select your goal</option>
-            <option th:each="nutritionGoal : ${nutritionGoalsOptions}"
-                    th:value="${nutritionGoal}"
-                    th:text="${nutritionGoal}">
-            </option>
-        </select>
+        <label class="form-label">Select Your Goals:</label>
+        <div class="card p-3 shadow-sm bg-light border-0">
+            <div class="row row-cols-1 row-cols-md-2 g-2">
+                <div th:each="nutritionGoal : ${nutritionGoalsOptions}" class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox"
+                               th:id="${nutritionGoal}" th:name="goals" th:value="${nutritionGoal}">
+                        <label class="form-check-label" th:for="${nutritionGoal}" th:text="${nutritionGoal.getDisplayName()}"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <small class="form-text text-muted">Select one or more goals that apply.</small><span class="text-danger">*</span>
     </div>
 
     <div class="mb-3">
         <label for="timeframeToAchieve" class="form-label">Timeframe to Achieve Goal:</label>
-        <input type="text" class="form-control" id="timeframeToAchieve" name="timeframeToAchieve" placeholder="e.g., 3 months, 6 weeks" required>
+        <input type="text" class="form-control" id="timeframeToAchieve" name="timeframeToAchieve"
+               placeholder="e.g., 3 months, 6 weeks">
     </div>
 
     <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsMiddle}"></div>

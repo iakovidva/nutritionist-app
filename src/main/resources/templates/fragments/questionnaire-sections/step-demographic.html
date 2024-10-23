@@ -1,14 +1,12 @@
 <!-- fragments/step-demographic.html -->
 <div th:fragment="step" class="step" id="step-2" th:classappend="${currentStep == 2} ? 'active'">
     <h3>Demographic Information</h3>
-    <p th:text="'Current Step: ' + ${currentStep}"></p>
-
     <div class="mb-3">
-        <label for="fullName" class="form-label">Full Name:</label>
+        <label for="fullName" class="form-label">Full Name: <span class="text-danger">*</span></label>
         <input type="text" class="form-control" id="fullName" name="fullName" required>
     </div>
     <div class="mb-3">
-        <label for="birthday" class="form-label">Birthday:</label>
+        <label for="birthday" class="form-label">Birthday: <span class="text-danger">*</span></label>
         <input type="date" class="form-control" id="birthday" name="birthday" required>
     </div>
     <div class="mb-3">
@@ -16,12 +14,12 @@
         <input type="text" class="form-control" id="occupation" name="occupation">
     </div>
     <div class="mb-3">
-        <label for="gender" class="form-label">Gender:</label>
+        <label for="gender" class="form-label">Gender: <span class="text-danger">*</span></label>
         <select class="form-control" id="gender" name="gender" required>
             <option value="" disabled selected>Select gender</option>
             <option th:each="gender : ${genderOptions}"
                     th:value="${gender}"
-                    th:text="${gender}">
+                    th:text="${gender.getDisplayName()}">
             </option>
         </select>
     </div>
