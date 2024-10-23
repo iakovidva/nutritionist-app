@@ -4,7 +4,7 @@
 
     <div class="mb-3">
         <label for="exerciseFrequency" class="form-label">Exercise Frequency: <span class="text-danger">*</span></label>
-        <select class="form-control" id="exerciseFrequency" name="exerciseFrequency" required>
+        <select th:field="*{physicalActivity.exerciseFrequency}" class="form-control" id="exerciseFrequency" name="exerciseFrequency" required>
             <option value="" disabled selected>Select frequency</option>
             <option th:each="frequency : ${weeklyFrequencyOptions}"
                     th:value="${frequency}"
@@ -15,12 +15,12 @@
 
     <div class="mb-3">
         <label for="usualTrainingTime" class="form-label">Usual Training Time:</label>
-        <input type="text" class="form-control" id="usualTrainingTime" name="usualTrainingTime" placeholder="e.g., 30 minutes, 1 hour">
+        <input th:field="*{physicalActivity.usualTrainingTime}" type="text" class="form-control" id="usualTrainingTime" name="usualTrainingTime" placeholder="e.g., 30 minutes, 1 hour">
     </div>
 
     <div class="mb-3">
         <label for="enduranceFrequency" class="form-label">Endurance Training Frequency:</label>
-        <select class="form-control" id="enduranceFrequency" name="enduranceFrequency">
+        <select th:field="*{physicalActivity.enduranceFrequency}" class="form-control" id="enduranceFrequency" name="enduranceFrequency">
             <option value="" disabled selected>Select frequency</option>
             <option th:each="frequency : ${weeklyFrequencyOptions}"
                     th:value="${frequency}"
@@ -31,7 +31,7 @@
 
     <div class="mb-3">
         <label for="strengthTrainingFrequency" class="form-label">Strength Training Frequency:</label>
-        <select class="form-control" id="strengthTrainingFrequency" name="strengthTrainingFrequency">
+        <select th:field="*{physicalActivity.strengthTrainingFrequency}" class="form-control" id="strengthTrainingFrequency" name="strengthTrainingFrequency">
             <option value="" disabled selected>Select frequency</option>
             <option th:each="frequency : ${weeklyFrequencyOptions}"
                     th:value="${frequency}"
@@ -42,7 +42,7 @@
 
     <div class="mb-3">
         <label for="yogaPilatesFrequency" class="form-label">Yoga/Pilates Frequency:</label>
-        <select class="form-control" id="yogaPilatesFrequency" name="yogaPilatesFrequency">
+        <select th:field="*{physicalActivity.yogaPilatesFrequency}" class="form-control" id="yogaPilatesFrequency" name="yogaPilatesFrequency">
             <option value="" disabled selected>Select frequency</option>
             <option th:each="frequency : ${weeklyFrequencyOptions}"
                     th:value="${frequency}"
@@ -53,12 +53,12 @@
 
     <div class="mb-3">
         <label for="otherActivity" class="form-label">Other Activities:</label>
-        <input type="text" class="form-control" id="otherActivity" name="otherActivity" placeholder="e.g., swimming, cycling">
+        <input th:field="*{physicalActivity.otherActivity}" type="text" class="form-control" id="otherActivity" name="otherActivity" placeholder="e.g., swimming, cycling">
     </div>
 
     <div class="mb-3">
         <label for="otherActivityFrequency" class="form-label">Other Activity Frequency:</label>
-        <select class="form-control" id="otherActivityFrequency" name="otherActivityFrequency">
+        <select th:field="*{physicalActivity.otherActivityFrequency}" class="form-control" id="otherActivityFrequency" name="otherActivityFrequency">
             <option value="" disabled selected>Select frequency</option>
             <option th:each="frequency : ${weeklyFrequencyOptions}"
                     th:value="${frequency}"

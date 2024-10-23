@@ -3,19 +3,20 @@
     <h3>Anthropometric Information</h3>
         <div class="mb-2">
             <label for="height" class="form-label">Height (cm): <span class="text-danger">*</span></label>
-            <input type="number" class="form-control" id="height" name="height" required>
+            <input th:field="*{anthropometric.height}" type="number" class="form-control" id="height" name="height" required>
         </div>
         <div class="mb-2">
             <label for="weight" class="form-label">Weight (kg): <span class="text-danger">*</span></label>
-            <input type="number" step="0.1" class="form-control" id="weight" name="weight" required>
+            <input th:field="*{anthropometric.weight}" type="number" step="0.1" class="form-control" id="weight" name="weight" required>
         </div>
         <div class="mb-2">
             <label for="waistCircumference" class="form-label">Waist Circumference (cm):</label>
-            <input type="number" class="form-control" id="waistCircumference" name="waistCircumference">
+            <input th:field="*{anthropometric.waistCircumference}" type="number" class="form-control" id="waistCircumference"
+                   name="waistCircumference" placeholder="at the narrowest point for women - at the navel for men">
         </div>
         <div class="mb-2">
             <label for="recentMeasures" class="form-label">Recent Measures:</label>
-            <textarea class="form-control" id="recentMeasures" name="recentMeasures" rows="3"></textarea>
+            <textarea th:field="*{anthropometric.recentMeasures}" class="form-control" id="recentMeasures" name="recentMeasures" rows="3"></textarea>
         </div>
     <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsFirst}"></div>
 </div>

@@ -4,7 +4,7 @@
 
     <div class="mb-3">
         <label for="regularMenstrualCycle" class="form-label">Regular Menstrual Cycle: <span class="text-danger">*</span></label>
-        <select class="form-control" id="regularMenstrualCycle" name="regularMenstrualCycle" required>
+        <select th:field="*{menstrualCycle.regularMenstrualCycle}" class="form-control" id="regularMenstrualCycle" name="regularMenstrualCycle" required>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
@@ -12,12 +12,12 @@
 
     <div class="mb-3" id="irregularCycleReasonDiv" style="display: none;">
         <label for="irregularCycleReason" class="form-label">Reason for Irregular Cycle: </label>
-        <input type="text" class="form-control" id="irregularCycleReason" name="irregularCycleReason" placeholder="e.g., stress, medical condition">
+        <input th:field="*{menstrualCycle.irregularCycleReason}" type="text" class="form-control" id="irregularCycleReason" name="irregularCycleReason" placeholder="e.g., stress, medical condition">
     </div>
 
     <div class="mb-3">
         <label for="changesInAppetiteOrWeight" class="form-label">Changes in Appetite or Weight: <span class="text-danger">*</span></label>
-        <select class="form-control" id="changesInAppetiteOrWeight" name="changesInAppetiteOrWeight" required>
+        <select th:field="*{menstrualCycle.changesInAppetiteOrWeight}" class="form-control" id="changesInAppetiteOrWeight" name="changesInAppetiteOrWeight" required>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
@@ -25,12 +25,12 @@
 
     <div class="mb-3" id="descriptionOfChangesDiv" style="display: none">
         <label for="descriptionOfChanges" class="form-label">Description of Changes:</label>
-        <textarea class="form-control" id="descriptionOfChanges" name="descriptionOfChanges" rows="3"></textarea>
+        <textarea th:field="*{menstrualCycle.descriptionOfChanges}" class="form-control" id="descriptionOfChanges" name="descriptionOfChanges" rows="3"></textarea>
     </div>
 
     <div class="mb-3">
         <label for="dayOfCycleWhenWeighed" class="form-label">Day of Cycle When Weighed: <span class="text-danger">*</span></label>
-        <input type="number" class="form-control" id="dayOfCycleWhenWeighed" name="dayOfCycleWhenWeighed" required>
+        <input th:field="*{menstrualCycle.dayOfCycleWhenWeighed}" type="number" class="form-control" id="dayOfCycleWhenWeighed" name="dayOfCycleWhenWeighed" required>
     </div>
 
     <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsMiddle}"></div>
