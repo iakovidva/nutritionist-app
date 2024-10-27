@@ -5,7 +5,12 @@ import com.example.application.enums.DietTypes;
 import com.example.application.enums.Gender;
 import com.example.application.enums.Goals;
 import com.example.application.enums.WeeklyFrequency;
+import com.example.application.models.User;
+import com.example.application.models.questionnaire.Questionnaire;
+import com.example.application.services.UserService;
 import com.example.application.services.questionnaire.QuestionnaireService;
+import com.example.application.services.questionnaire.sections.SectionsService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,10 +20,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class QuestionnaireController {
 
+    private UserService userService;
     private QuestionnaireService questionnaireService;
+    private SectionsService sectionsService;
 
-    public QuestionnaireController(QuestionnaireService questionnaireService) {
+
+    public QuestionnaireController(QuestionnaireService questionnaireService,
+                                   UserService userService,
+                                   SectionsService sectionsService) {
         this.questionnaireService = questionnaireService;
+        this.userService = userService;
+        this.sectionsService = sectionsService;
     }
 
     @GetMapping("/questionnaire")
@@ -29,15 +41,25 @@ public class QuestionnaireController {
         model.addAttribute("dietTypeOptions", DietTypes.values());
         model.addAttribute("nutritionGoalsOptions", Goals.values());
         model.addAttribute("currentStep", 1);
-        return "questionnaire.html";
+        return "questionnaire";
     }
 
     @PostMapping("/questionnaire/submit")
+    @Transactional
     public String submitQuestionnaire(@ModelAttribute QuestionnaireData questionnaireData) {
-        // Handle saving the submitted data here (e.g., saving to the database)
-        // You may need to use services and repositories for this.
+        User user = userService.createAndPersistUser();
+        Questionnaire questionnaire = questionnaireService.createAndPersistQuestionnaire(user);
+
+        sectionsService.findAndSaveQuestionnaireSections(questionnaire, questionnaireData);
+
         questionnaireService.submitQuestionnaire();
         // After processing, redirect to a success page or show a success message
-        return "redirect:/";
+        return "redirect:/submitted";
     }
+
+    @GetMapping("/submitted")
+    public String submitted() {
+        return "questionnaire-submitted";
+    }
+
 }
