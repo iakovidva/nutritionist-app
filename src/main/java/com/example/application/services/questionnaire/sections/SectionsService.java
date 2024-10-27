@@ -10,7 +10,6 @@ import com.example.application.models.questionnaire.NutritionGoals;
 import com.example.application.models.questionnaire.PhysicalActivity;
 import com.example.application.models.questionnaire.Questionnaire;
 import com.example.application.models.questionnaire.WorkAndMealSchedule;
-import com.example.application.services.questionnaire.QuestionnaireService;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,8 +24,7 @@ public class SectionsService {
     private PhysicalActivityService physicalActivityService;
     private WorkAndMealScheduleService workAndMealScheduleService;
 
-    public SectionsService(QuestionnaireService questionnaireService,
-                           AnthropometricService anthropometricService,
+    public SectionsService(AnthropometricService anthropometricService,
                            DemographicService demographicService,
                            DietaryPreferencesService dietaryPreferencesService,
                            HealthAndMedicalService healthAndMedicalService,
