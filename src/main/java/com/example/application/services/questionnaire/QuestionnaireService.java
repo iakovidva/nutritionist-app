@@ -6,22 +6,26 @@ import com.example.application.models.questionnaire.Questionnaire;
 import com.example.application.repositories.questionnaire.QuestionnaireRepository;
 import com.example.application.services.UserService;
 import com.example.application.services.questionnaire.sections.SectionsService;
+import com.example.application.telegram.TelegramNotificationService;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 @Service
 public class QuestionnaireService {
 
+    private TelegramNotificationService telegramNotificationService;
     private QuestionnaireRepository questionnaireRepository;
     private UserService userService;
     private SectionsService sectionsService;
 
     public QuestionnaireService(QuestionnaireRepository questionnaireRepository,
                                 UserService userService,
-                                SectionsService sectionsService) {
+                                SectionsService sectionsService,
+                                TelegramNotificationService telegramNotificationService) {
         this.questionnaireRepository = questionnaireRepository;
         this.userService = userService;
         this.sectionsService = sectionsService;
+        this.telegramNotificationService = telegramNotificationService;
     }
 
     @Transactional
@@ -30,7 +34,7 @@ public class QuestionnaireService {
         Questionnaire questionnaire = createAndPersistQuestionnaire(user);
 
         sectionsService.findAndSaveQuestionnaireSections(questionnaire, questionnaireData);
-        displayMessageAfterSubmissions();
+        displayMessageAfterSubmissions(user.getEmail(), questionnaire.getId());
     }
 
     private Questionnaire createAndPersistQuestionnaire(User user) {
@@ -42,9 +46,10 @@ public class QuestionnaireService {
         return questionnaire;
     }
 
-    private void displayMessageAfterSubmissions() {
+    private void displayMessageAfterSubmissions(String userEmail, Long questionnaireId) {
         System.out.println("------------------------------------------");
         System.out.println("Questionnaire submitted");
         System.out.println("------------------------------------------");
+        telegramNotificationService.sendMessage(String.format("User with email %s submitted the questionnaire no. %s", userEmail, questionnaireId));
     }
 }
