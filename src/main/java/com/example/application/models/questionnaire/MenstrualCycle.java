@@ -27,6 +27,6 @@ public class MenstrualCycle extends QuestionnaireSection {
     private String descriptionOfChanges;
 
     @Column(name = "day_of_cycle_when_weighed")
-    private int dayOfCycleWhenWeighed;
+    private Integer dayOfCycleWhenWeighed;
 
 }

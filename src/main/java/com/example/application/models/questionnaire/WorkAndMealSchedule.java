@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class WorkAndMealSchedule extends QuestionnaireSection {
 
     @Column(name = "meals_daily")
-    private int mealsDaily;
+    private Integer mealsDaily;
 
     @Column(name = "meal_times")
     private String mealTimes;

@@ -12,3 +12,8 @@ body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     color: #333;
 }
+
+.is-invalid {
+    border-color: #dc3545; /* Bootstrap's red color for invalid feedback */
+    background-color: #d7e0f8; /* Light red background for better visibility */
+}

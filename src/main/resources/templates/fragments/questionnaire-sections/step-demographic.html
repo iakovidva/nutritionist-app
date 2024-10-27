@@ -16,7 +16,7 @@
     <div class="mb-3">
         <label for="gender" class="form-label">Gender: <span class="text-danger">*</span></label>
         <select th:field="*{demographic.gender}" class="form-control" id="gender" name="gender" required>
-            <option value="" disabled selected>Select gender</option>
+            <option value="" selected>Select gender</option>
             <option th:each="gender : ${genderOptions}"
                     th:value="${gender}"
                     th:text="${gender.getDisplayName()}">

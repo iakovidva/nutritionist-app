@@ -15,13 +15,13 @@ import lombok.NoArgsConstructor;
 public class Anthropometric extends QuestionnaireSection {
 
     @Column(name = "height", nullable = false)
-    private int height;
+    private Integer height;
 
     @Column(name = "weight", nullable = false)
-    private float weight;
+    private Float weight;
 
     @Column(name = "waist_circumference")
-    private int waistCircumference; //at the narrowest point for women - at the navel for men
+    private Integer waistCircumference; //at the narrowest point for women - at the navel for men
 
     @Column(name = "recent_measures")
     private String recentMeasures;

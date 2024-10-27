@@ -5,6 +5,7 @@
     <div class="mb-3">
         <label for="regularMenstrualCycle" class="form-label">Regular Menstrual Cycle: <span class="text-danger">*</span></label>
         <select th:field="*{menstrualCycle.regularMenstrualCycle}" class="form-control" id="regularMenstrualCycle" name="regularMenstrualCycle" required>
+            <option value="" selected>Please select</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
@@ -18,6 +19,7 @@
     <div class="mb-3">
         <label for="changesInAppetiteOrWeight" class="form-label">Changes in Appetite or Weight: <span class="text-danger">*</span></label>
         <select th:field="*{menstrualCycle.changesInAppetiteOrWeight}" class="form-control" id="changesInAppetiteOrWeight" name="changesInAppetiteOrWeight" required>
+            <option value="" selected>Please select</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
         </select>
