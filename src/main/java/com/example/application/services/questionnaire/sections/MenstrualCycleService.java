@@ -14,13 +14,11 @@ public class MenstrualCycleService {
         this.menstrualCycleRepository = menstrualCycleRepository;
     }
 
-    public void saveInfo(MenstrualCycle menstrualCycle) {
-        System.out.println("Saving + " + menstrualCycle);
-    }
-
     public void saveInfo(MenstrualCycle menstrualCycle, Questionnaire questionnaire) {
-        menstrualCycle.setQuestionnaire(questionnaire);
-        menstrualCycleRepository.save(menstrualCycle);
-        System.out.println("Saving + " + menstrualCycle);
+        if (menstrualCycle.getRegularMenstrualCycle() != null) {
+            menstrualCycle.setQuestionnaire(questionnaire);
+            menstrualCycleRepository.save(menstrualCycle);
+            System.out.println("Saving + " + menstrualCycle);
+        }
     }
 }
