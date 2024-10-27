@@ -26,7 +26,6 @@ public class NutritionGoals extends QuestionnaireSection {
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "nutrition_goal", joinColumns = @JoinColumn(name = "nutrition_goals_id"))
     @Column(name = "goal", nullable = false)
-    //TODO: consider how to structure that
     private Set<Goals> goals = new HashSet<>();
 
     @Column(name = "timeframe_to_achieve")

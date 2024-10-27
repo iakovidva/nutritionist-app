@@ -19,8 +19,8 @@ import lombok.NoArgsConstructor;
 public class DietaryPreferences extends QuestionnaireSection {
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private DietTypes dietTypes;
+    @Column(name = "diet_type", nullable = false)
+    private DietTypes dietType;
 
     @Column(name = "avoided_foods")
     private String avoidedFoods;

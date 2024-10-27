@@ -10,11 +10,11 @@ public class BasicController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("message", "Hello world message! :) ");
-        return "index.html";
+        return "index";
     }
 
     @GetMapping("/bootstrap")
     public String bootStrap() {
-        return "bootstrap-testing.html";
+        return "bootstrap-testing";
     }
 }
