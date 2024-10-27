@@ -1,4 +1,4 @@
-package com.example.application.repositories.questionnaire;
+package com.example.application.repositories.questionnaire.sections;
 
 import com.example.application.models.questionnaire.MenstrualCycle;
 import org.springframework.data.jpa.repository.JpaRepository;
