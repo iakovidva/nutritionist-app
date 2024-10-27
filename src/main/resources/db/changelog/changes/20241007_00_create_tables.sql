@@ -96,7 +96,7 @@ CREATE TABLE health_medical
     lack_of_vitamins_or_minerals VARCHAR(255) NULL,
     created_at                   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at                   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_health_medical_questionnaire FOREIGN KEY (questionnaire_id) REFERENCES questionnaire (id)
+    CONSTRAINT fk_health_medical_questionnaire FOREIGN KEY (questionnaire_id) REFERENCES questionnaire (id) ON DELETE SET NULL
 );
 
 --
@@ -157,9 +157,18 @@ CREATE TABLE nutrition_goals
 (
     id                   BIGSERIAL PRIMARY KEY,
     questionnaire_id     BIGINT       NOT NULL,
-    goal                 GOAL         NOT NULL,
+--     goal                 GOAL         NOT NULL,
     timeframe_to_achieve VARCHAR(255) NULL,
     created_at           TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at           TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_user_goals_questionnaire FOREIGN KEY (questionnaire_id) REFERENCES questionnaire (id) ON DELETE SET NULL
+);
+
+DROP TABLE IF EXISTS nutrition_goal;
+CREATE TABLE nutrition_goal
+(
+    nutrition_goals_id BIGINT         NOT NULL,
+    goal                 GOAL         NOT NULL,
+    CONSTRAINT nutrition_goal_pkey PRIMARY KEY (nutrition_goals_id, goal),
+    CONSTRAINT fk_nutrition_goals FOREIGN KEY (nutrition_goals_id) REFERENCES nutrition_goals(id) ON DELETE CASCADE
 );

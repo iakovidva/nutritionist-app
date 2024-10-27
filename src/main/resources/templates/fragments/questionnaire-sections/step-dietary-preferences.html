@@ -4,7 +4,7 @@
 
     <div class="mb-3">
         <label for="dietType" class="form-label">Diet Type: <span class="text-danger">*</span></label>
-        <select th:field="*{dietaryPreferences.dietTypes}" class="form-control" id="dietType" name="dietType" required>
+        <select th:field="*{dietaryPreferences.dietType}" class="form-control" id="dietType" name="dietType" required>
             <option value="" disabled selected>Select type</option>
             <option th:each="dietType : ${dietTypeOptions}"
                     th:value="${dietType}"

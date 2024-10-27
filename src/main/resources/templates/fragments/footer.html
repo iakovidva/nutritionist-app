@@ -1,0 +1,14 @@
+<!-- templates/fragments/footer.html -->
+<div th:fragment="footer">
+    <footer>
+        <p>&copy; 2024 My Application. All rights reserved.</p>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/privacy}">Privacy Policy <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/terms}">Terms of Service</a>
+            </li>
+        </ul>
+    </footer>
+</div>
