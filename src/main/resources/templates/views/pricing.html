@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pricing - MyApp</title>
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<!-- Include the header -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container mt-4">
+    <h2>Pricing</h2>
+    <p>We offer flexible pricing plans to suit your needs:</p>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Plan</th>
+            <th>Price</th>
+            <th>Features</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Basic</td>
+            <td>$9.99/month</td>
+            <td>Access to core features</td>
+        </tr>
+        <tr>
+            <td>Pro</td>
+            <td>$19.99/month</td>
+            <td>Includes advanced analytics and priority support</td>
+        </tr>
+        <tr>
+            <td>Enterprise</td>
+            <td>Contact us for pricing</td>
+            <td>Customized solutions for large businesses</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

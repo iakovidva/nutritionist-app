@@ -30,7 +30,7 @@ public class QuestionnaireController {
         model.addAttribute("dietTypeOptions", DietTypes.values());
         model.addAttribute("nutritionGoalsOptions", Goals.values());
         model.addAttribute("currentStep", 1);
-        return "questionnaire";
+        return "views/questionnaire";
     }
 
     @PostMapping("/questionnaire/submit")
@@ -42,7 +42,7 @@ public class QuestionnaireController {
 
     @GetMapping("/submitted")
     public String submitted() {
-        return "questionnaire-submitted";
+        return "views/questionnaire-submitted";
     }
 
 }

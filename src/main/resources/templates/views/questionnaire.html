@@ -12,7 +12,7 @@
 <body>
 
 <!-- Include the header -->
-<div th:replace="fragments/header :: header"></div>
+<div th:replace="~{fragments/header :: header}"></div>
 
 <div class="container-fluid mt-5">
     <div class="row justify-content-center">
@@ -47,7 +47,7 @@
 </div>
 
 <!-- Include the footer -->
-<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="~{fragments/footer :: footer}"></div>
 
 <!-- Include JavaScript -->
 <script src="/js/questionnaire-select-boolean-listeners.js"></script>

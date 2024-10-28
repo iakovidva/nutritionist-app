@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap/bootstrap.min.css}" />
 
@@ -9,10 +10,11 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
+<div th:insert="~{fragments/header :: header}"></div>
+<h1 th:text="${message}">This is a default message</h1>
+<a th:href="@{/questionnaire}" class="btn btn-primary">Go to questionnaire!</a>
 
-<h1 >Submitted page</h1>
-
+<div th:replace="~{fragments/footer :: footer}"></div>
 <script th:src="@{/js/bootstrap/bootstrap.bundle.min.js}"></script>
-
 </body>
 </html>

@@ -2,7 +2,7 @@
 <div th:fragment="step" class="step" id="step-5" th:classappend="${currentStep == 5} ? 'active'">
     <h3>Menstrual Cycle Information - Only for women</h3>
 
-    <div class="mb-3">
+    <div class="mb-2">
         <label for="regularMenstrualCycle" class="form-label">Regular Menstrual Cycle: <span class="text-danger">*</span></label>
         <select th:field="*{menstrualCycle.regularMenstrualCycle}" class="form-control" id="regularMenstrualCycle" name="regularMenstrualCycle" required>
             <option value="" selected>Please select</option>
@@ -11,12 +11,12 @@
         </select>
     </div>
 
-    <div class="mb-3" id="irregularCycleReasonDiv" style="display: none;">
+    <div class="mb-2" id="irregularCycleReasonDiv" style="display: none;">
         <label for="irregularCycleReason" class="form-label">Reason for Irregular Cycle: </label>
         <input th:field="*{menstrualCycle.irregularCycleReason}" type="text" class="form-control" id="irregularCycleReason" name="irregularCycleReason" placeholder="e.g., stress, medical condition">
     </div>
 
-    <div class="mb-3">
+    <div class="mb-2">
         <label for="changesInAppetiteOrWeight" class="form-label">Changes in Appetite or Weight: <span class="text-danger">*</span></label>
         <select th:field="*{menstrualCycle.changesInAppetiteOrWeight}" class="form-control" id="changesInAppetiteOrWeight" name="changesInAppetiteOrWeight" required>
             <option value="" selected>Please select</option>
@@ -25,12 +25,12 @@
         </select>
     </div>
 
-    <div class="mb-3" id="descriptionOfChangesDiv" style="display: none">
+    <div class="mb-2" id="descriptionOfChangesDiv" style="display: none">
         <label for="descriptionOfChanges" class="form-label">Description of Changes:</label>
         <textarea th:field="*{menstrualCycle.descriptionOfChanges}" class="form-control" id="descriptionOfChanges" name="descriptionOfChanges" rows="3"></textarea>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-2">
         <label for="dayOfCycleWhenWeighed" class="form-label">Day of Cycle When Weighed: <span class="text-danger">*</span></label>
         <input th:field="*{menstrualCycle.dayOfCycleWhenWeighed}" type="number" class="form-control" id="dayOfCycleWhenWeighed" name="dayOfCycleWhenWeighed" required>
     </div>
