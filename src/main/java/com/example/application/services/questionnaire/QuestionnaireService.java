@@ -8,10 +8,14 @@ import com.example.application.services.UserService;
 import com.example.application.services.questionnaire.sections.SectionsService;
 import com.example.application.telegram.TelegramNotificationService;
 import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class QuestionnaireService {
+
+    private static final Logger log = LoggerFactory.getLogger(QuestionnaireService.class);
 
     private TelegramNotificationService telegramNotificationService;
     private QuestionnaireRepository questionnaireRepository;
@@ -42,14 +46,14 @@ public class QuestionnaireService {
         questionnaire.setUser(user);
         questionnaire.setType(Questionnaire.QuestionnaireType.INITIAL);
         questionnaireRepository.save(questionnaire);
-        System.out.println("Saving + " + questionnaire.getId());
+        log.info("Saving {}", questionnaire.getId());
         return questionnaire;
     }
 
     private void displayMessageAfterSubmissions(String userEmail, Long questionnaireId) {
-        System.out.println("------------------------------------------");
-        System.out.println("Questionnaire submitted");
-        System.out.println("------------------------------------------");
+        log.info("------------------------------------------");
+        log.info("Questionnaire submitted");
+        log.info("------------------------------------------");
         telegramNotificationService.sendMessage(String.format("User with email %s submitted the questionnaire no. %s", userEmail, questionnaireId));
     }
 }

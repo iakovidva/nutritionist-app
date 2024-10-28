@@ -37,7 +37,6 @@ public class QuestionnaireController {
     public String handleSubmit(@ModelAttribute QuestionnaireData questionnaireData) {
 
         questionnaireService.submitQuestionnaire(questionnaireData);
-        // After processing, redirect to a success page or show a success message
         return "redirect:/submitted";
     }
 

@@ -21,7 +21,7 @@ public class Anthropometric extends QuestionnaireSection {
     private Float weight;
 
     @Column(name = "waist_circumference")
-    private Integer waistCircumference; //at the narrowest point for women - at the navel for men
+    private Integer waistCircumference; //narrowest point (women) - navel (men)
 
     @Column(name = "recent_measures")
     private String recentMeasures;
