@@ -8,6 +8,7 @@ import com.example.application.services.UserService;
 import com.example.application.services.questionnaire.sections.SectionsService;
 import com.example.application.telegram.TelegramNotificationService;
 import jakarta.transaction.Transactional;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -33,12 +34,13 @@ public class QuestionnaireService {
     }
 
     @Transactional
-    public void submitQuestionnaire(QuestionnaireData questionnaireData) {
+    public Questionnaire submitQuestionnaire(QuestionnaireData questionnaireData) {
         User user = userService.createAndPersistUser();
         Questionnaire questionnaire = createAndPersistQuestionnaire(user);
 
         sectionsService.findAndSaveQuestionnaireSections(questionnaire, questionnaireData);
         displayMessageAfterSubmissions(user.getEmail(), questionnaire.getId());
+        return questionnaire;
     }
 
     private Questionnaire createAndPersistQuestionnaire(User user) {
@@ -55,5 +57,11 @@ public class QuestionnaireService {
         log.info("Questionnaire submitted");
         log.info("------------------------------------------");
         telegramNotificationService.sendMessage(String.format("User with email %s submitted the questionnaire no. %s", userEmail, questionnaireId));
+    }
+
+    public Questionnaire findById(Long questionnaireId) {
+        return Optional.of(questionnaireRepository.findById(questionnaireId))
+                .get()
+                .orElseThrow(() -> new RuntimeException("QuestionnaireId doesn't exist"));
     }
 }

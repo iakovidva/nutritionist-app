@@ -2,6 +2,15 @@
 <div th:fragment="step" class="step" id="step-9" th:classappend="${currentStep == 9} ? 'active'">
     <h3>Review & Submit</h3>
     <p>Review your information and click "Submit" when you are ready.</p>
-
+    <!-- Display a summary of the submitted questionnaire -->
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Questionnaire Summary</h5>
+<!--            Doesn't work that way! -->
+            <p><strong>Submitted By:</strong> <span th:text="${questionnaireData.demographic.fullName}"></span></p>
+            <p><strong>Submitted By:</strong> <span th:text="${questionnaireData.demographic.gender}"></span></p>
+            <!-- Add more fields here as necessary to summarize the questionnaire -->
+        </div>
+    </div>
     <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsLast}"></div>
 </div>
