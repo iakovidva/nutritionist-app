@@ -1,6 +1,6 @@
 package com.example.application.models.questionnaire;
 
-import com.example.application.models.User;
+import com.example.application.models.Client;
 import com.example.application.models.common.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,8 +21,8 @@ import lombok.NoArgsConstructor;
 public class Questionnaire extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "client_id")
+    private Client client;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
