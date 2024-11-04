@@ -1,10 +1,10 @@
 package com.example.application.services.questionnaire;
 
 import com.example.application.dto.QuestionnaireData;
-import com.example.application.models.User;
+import com.example.application.models.Client;
 import com.example.application.models.questionnaire.Questionnaire;
 import com.example.application.repositories.questionnaire.QuestionnaireRepository;
-import com.example.application.services.UserService;
+import com.example.application.services.ClientService;
 import com.example.application.services.questionnaire.sections.SectionsService;
 import com.example.application.telegram.TelegramNotificationService;
 import jakarta.transaction.Transactional;
@@ -20,32 +20,32 @@ public class QuestionnaireService {
 
     private TelegramNotificationService telegramNotificationService;
     private QuestionnaireRepository questionnaireRepository;
-    private UserService userService;
+    private ClientService clientService;
     private SectionsService sectionsService;
 
     public QuestionnaireService(QuestionnaireRepository questionnaireRepository,
-                                UserService userService,
+                                ClientService clientService,
                                 SectionsService sectionsService,
                                 TelegramNotificationService telegramNotificationService) {
         this.questionnaireRepository = questionnaireRepository;
-        this.userService = userService;
+        this.clientService = clientService;
         this.sectionsService = sectionsService;
         this.telegramNotificationService = telegramNotificationService;
     }
 
     @Transactional
     public Questionnaire submitQuestionnaire(QuestionnaireData questionnaireData) {
-        User user = userService.createAndPersistUser();
-        Questionnaire questionnaire = createAndPersistQuestionnaire(user);
+        Client client = clientService.createAndPersistUser();
+        Questionnaire questionnaire = createAndPersistQuestionnaire(client);
 
         sectionsService.findAndSaveQuestionnaireSections(questionnaire, questionnaireData);
-        displayMessageAfterSubmissions(user.getEmail(), questionnaire.getId());
+        displayMessageAfterSubmissions(client.getEmail(), questionnaire.getId());
         return questionnaire;
     }
 
-    private Questionnaire createAndPersistQuestionnaire(User user) {
+    private Questionnaire createAndPersistQuestionnaire(Client client) {
         Questionnaire questionnaire = new Questionnaire();
-        questionnaire.setUser(user);
+        questionnaire.setClient(client);
         questionnaire.setType(Questionnaire.QuestionnaireType.INITIAL);
         questionnaireRepository.save(questionnaire);
         log.info("Saving {}", questionnaire.getId());

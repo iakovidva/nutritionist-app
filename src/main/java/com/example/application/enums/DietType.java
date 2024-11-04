@@ -1,6 +1,6 @@
 package com.example.application.enums;
 
-public enum DietTypes {
+public enum DietType {
     BALANCED_DIET("Balanced diet"),
     VEGETARIAN("Vegetarian"),
     VEGAN("Vegan"),
@@ -11,7 +11,7 @@ public enum DietTypes {
 
     private final String displayName;
 
-    DietTypes(String displayName) {
+    DietType(String displayName) {
         this.displayName = displayName;
     }
 

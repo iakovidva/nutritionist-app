@@ -1,6 +1,6 @@
 package com.example.application.enums;
 
-public enum Goals {
+public enum Goal {
     HEALTH_IMPROVEMENT("Health improvement"),
     FAT_LOSS("Fat loss"),
     WEIGHT_LOSS("Weight loss"),
@@ -11,7 +11,7 @@ public enum Goals {
 
     private final String displayName;
 
-    Goals(String displayName) {
+    Goal(String displayName) {
         this.displayName = displayName;
     }
 

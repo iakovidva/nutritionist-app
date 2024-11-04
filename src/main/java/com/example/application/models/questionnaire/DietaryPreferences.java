@@ -1,6 +1,6 @@
 package com.example.application.models.questionnaire;
 
-import com.example.application.enums.DietTypes;
+import com.example.application.enums.DietType;
 import com.example.application.enums.WeeklyFrequency;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +20,7 @@ public class DietaryPreferences extends QuestionnaireSection {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "diet_type", nullable = false)
-    private DietTypes dietType;
+    private DietType dietType;
 
     @Column(name = "avoided_foods")
     private String avoidedFoods;

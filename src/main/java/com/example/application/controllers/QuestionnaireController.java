@@ -1,9 +1,9 @@
 package com.example.application.controllers;
 
 import com.example.application.dto.QuestionnaireData;
-import com.example.application.enums.DietTypes;
+import com.example.application.enums.DietType;
 import com.example.application.enums.Gender;
-import com.example.application.enums.Goals;
+import com.example.application.enums.Goal;
 import com.example.application.enums.WeeklyFrequency;
 import com.example.application.models.questionnaire.Questionnaire;
 import com.example.application.services.questionnaire.QuestionnaireService;
@@ -28,8 +28,8 @@ public class QuestionnaireController {
         model.addAttribute("questionnaireData", new QuestionnaireData());
         model.addAttribute("genderOptions", Gender.values());
         model.addAttribute("weeklyFrequencyOptions", WeeklyFrequency.values());
-        model.addAttribute("dietTypeOptions", DietTypes.values());
-        model.addAttribute("nutritionGoalsOptions", Goals.values());
+        model.addAttribute("dietTypeOptions", DietType.values());
+        model.addAttribute("nutritionGoalsOptions", Goal.values());
         model.addAttribute("currentStep", 1);
         return "views/questionnaire";
     }
