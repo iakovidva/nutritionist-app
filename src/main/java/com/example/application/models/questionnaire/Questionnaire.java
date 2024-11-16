@@ -1,5 +1,7 @@
 package com.example.application.models.questionnaire;
 
+import com.example.application.enums.QuestionnaireStatus;
+import com.example.application.enums.QuestionnaireType;
 import com.example.application.models.Client;
 import com.example.application.models.common.BaseEntity;
 import jakarta.persistence.Column;
@@ -25,11 +27,10 @@ public class Questionnaire extends BaseEntity {
     private Client client;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "type", nullable = false)
     private QuestionnaireType type;
 
-    public enum QuestionnaireType {
-        INITIAL,
-        PROGRESS
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private QuestionnaireStatus status;
 }
