@@ -1,0 +1,48 @@
+<!-- fragments/step-dietary-preferences.html -->
+<div th:fragment="step" class="step" id="step-3" th:classappend="${currentStep == 3} ? 'active'">
+    <h3>Dietary Preferences</h3>
+
+    <div class="mb-2">
+        <label for="dietType" class="form-label">Diet Type: <span class="text-danger">*</span></label>
+        <select th:field="*{dietaryPreferences.dietType}" class="form-control" id="dietType" name="dietType" required>
+            <option value="" selected>Select type</option>
+            <option th:each="dietType : ${dietTypeOptions}"
+                    th:value="${dietType}"
+                    th:text="${dietType.getDisplayName()}">
+            </option>
+        </select>
+    </div>
+
+    <div class="mb-2">
+        <label for="avoidedFoods" class="form-label">Avoided Foods:</label>
+        <input th:field="*{dietaryPreferences.avoidedFoods}" type="text" class="form-control" id="avoidedFoods" name="avoidedFoods" placeholder="e.g., nuts, dairy">
+    </div>
+
+    <div class="mb-2">
+        <label for="hasAllergyOrIntolerance" class="form-label">Do you have any allergies or intolerances? <span class="text-danger">*</span></label>
+        <select th:field="*{dietaryPreferences.hasAllergyOrIntolerance}" class="form-control" id="hasAllergyOrIntolerance" name="hasAllergyOrIntolerance" required>
+            <option value="" selected>Please select</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <div class="mb-2" id="allergiesOrIntolerancesDiv" style="display: none;">
+        <label for="allergiesOrIntolerances" class="form-label">Please specify:</label>
+        <input th:field="*{dietaryPreferences.alergiesOrIntolerances}" type="text" class="form-control" id="allergiesOrIntolerances" name="allergiesOrIntolerances"
+               placeholder="e.g., gluten, lactose">
+    </div>
+
+    <div class="mb-2">
+        <label for="alcoholFrequency" class="form-label">How often do you consume alcohol? <span class="text-danger">*</span></label>
+        <select th:field="*{dietaryPreferences.alcoholFrequency}" class="form-control" id="alcoholFrequency" name="alcoholFrequency" required>
+            <option value="" selected>Select frequency</option>
+            <option th:each="frequency : ${weeklyFrequencyOptions}"
+                    th:value="${frequency}"
+                    th:text="${frequency.getDisplayName()}">
+            </option>
+        </select>
+    </div>
+
+    <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsMiddle}"></div>
+</div>

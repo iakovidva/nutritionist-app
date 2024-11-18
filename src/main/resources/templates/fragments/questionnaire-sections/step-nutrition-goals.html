@@ -1,0 +1,29 @@
+<!-- fragments/step-nutrition-goals.html -->
+<div th:fragment="step" class="step" id="step-6" th:classappend="${currentStep == 6} ? 'active'">
+    <h3>Nutrition Goals</h3>
+
+    <div class="mb-2">
+        <label class="form-label">Select Your Goals:</label>
+        <div class="card p-3 shadow-sm bg-light border-0">
+            <div class="row row-cols-1 row-cols-md-2 g-3">
+                <div th:each="nutritionGoal : ${nutritionGoalsOptions}" class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox"
+                               th:field="*{nutritionGoals.goals}"
+                               th:id="${nutritionGoal.name()}" th:value="${nutritionGoal.name()}" />
+                        <label class="form-check-label" th:for="${nutritionGoal.name()}" th:text="${nutritionGoal.getDisplayName()}"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <small class="form-text text-muted">Select one or more goals that apply.</small>
+    </div>
+
+    <div class="mb-2">
+        <label for="timeframeToAchieve" class="form-label">Timeframe to Achieve Goal:</label>
+        <input th:field="*{nutritionGoals.timeframeToAchieve}" type="text" class="form-control" id="timeframeToAchieve" name="timeframeToAchieve"
+               placeholder="e.g., 3 months, 6 weeks">
+    </div>
+
+    <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsMiddle}"></div>
+</div>

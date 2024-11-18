@@ -1,0 +1,21 @@
+<!-- fragments/step-work-meal-schedule.html -->
+<div th:fragment="step" class="step" id="step-8" th:classappend="${currentStep == 8} ? 'active'">
+    <h3>Work and Meal Schedule</h3>
+
+    <div class="mb-2">
+        <label for="mealsDaily" class="form-label">Number of Meals Daily:</label>
+        <input th:field="*{workAndMealSchedule.mealsDaily}" type="number" class="form-control" id="mealsDaily" name="mealsDaily">
+    </div>
+
+    <div class="mb-2">
+        <label for="mealTimes" class="form-label">Meal Times:</label>
+        <input th:field="*{workAndMealSchedule.mealTimes}" type="text" class="form-control" id="mealTimes" name="mealTimes" placeholder="e.g., 8 AM, 12 PM, 6 PM">
+    </div>
+
+    <div class="mb-2">
+        <label for="workingHours" class="form-label">Working Hours:</label>
+        <input th:field="*{workAndMealSchedule.workingHours}" type="text" class="form-control" id="workingHours" name="workingHours" placeholder="e.g., 9 AM - 5 PM">
+    </div>
+
+    <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsMiddle}"></div>
+</div>

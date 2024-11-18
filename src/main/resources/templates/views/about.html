@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About - MyApp</title>
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<!-- Include the header -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container mt-4">
+    <h2>About Us</h2>
+    <p>Learn more about MyApp and our mission:</p>
+    <p>MyApp is dedicated to providing the best user experience through innovative features and a user-friendly interface. Our team is passionate about delivering quality solutions that make life easier for our users.</p>
+    <p>Contact us for more information or if you have any questions.</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!-- fragments/step-demographic.html -->
+<div th:fragment="step" class="step" id="step-2" th:classappend="${currentStep == 2} ? 'active'">
+    <h3>Demographic Information</h3>
+    <div class="mb-2">
+        <label for="fullName" class="form-label">Full Name: <span class="text-danger">*</span></label>
+        <input th:field="*{demographic.fullName}" type="text" class="form-control" id="fullName" name="fullName" required>
+    </div>
+    <div class="mb-2">
+        <label for="birthday" class="form-label">Birthday: <span class="text-danger">*</span></label>
+        <input th:field="*{demographic.birthday}" type="date" class="form-control" id="birthday" name="birthday" required>
+    </div>
+    <div class="mb-2">
+        <label for="occupation" class="form-label">Occupation:</label>
+        <input th:field="*{demographic.occupation}" type="text" class="form-control" id="occupation" name="occupation">
+    </div>
+    <div class="mb-2">
+        <label for="gender" class="form-label">Gender: <span class="text-danger">*</span></label>
+        <select th:field="*{demographic.gender}" class="form-control" id="gender" name="gender" required onchange="updateGender(this.value)">
+            <option value="" selected>Select gender</option>
+            <option th:each="gender : ${genderOptions}"
+                    th:value="${gender}"
+                    th:text="${gender.getDisplayName()}">
+            </option>
+        </select>
+    </div>
+    <div th:replace="~{fragments/common/questionnaire-navigation-buttons :: navigationButtonsMiddle}"></div>
+</div>

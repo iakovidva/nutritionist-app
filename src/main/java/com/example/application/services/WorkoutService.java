@@ -1,28 +1,27 @@
 package com.example.application.services;
 
-import com.example.application.model.Workout;
-import com.example.application.repository.WorkoutRepo;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
-import com.vaadin.hilla.BrowserCallable;
-import com.vaadin.hilla.Endpoint;
+import com.example.application.models.Workout;
+import com.example.application.repositories.WorkoutRepo;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@BrowserCallable
-@AnonymousAllowed
 @Service
 public class WorkoutService {
 
-    @Autowired
-    WorkoutRepo repo;
+    private static final Logger log = LoggerFactory.getLogger(WorkoutService.class);
 
-    private Random rand = new Random();
+    @Autowired
+    private WorkoutRepo repo;
+
+    private final Random rand = new Random();
 
     public List<Workout> getWorks() {
-        System.out.println(repo.findAll());
+        log.info(repo.findAll().toString());
         return repo.findAll();
     }
 

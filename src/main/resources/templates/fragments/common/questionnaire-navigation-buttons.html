@@ -1,0 +1,24 @@
+<!-- fragments/common/questionnaire-navigation-buttons ::  -->
+<div th:fragment="navigationButtonsFirst" class="d-flex justify-content-end">
+    <button type="button" class="btn btn-primary" onclick="nextStep()">
+        Next <i class="bi bi-arrow-right"></i>
+    </button>
+</div>
+
+<div th:fragment="navigationButtonsMiddle" class="d-flex justify-content-between">
+    <button type="button" class="btn btn-secondary" onclick="previousStep()">
+        <i class="bi bi-arrow-left"></i> Previous
+    </button>
+    <button type="button" class="btn btn-primary" onclick="nextStep()">
+        Next <i class="bi bi-arrow-right"></i>
+    </button>
+</div>
+
+<div th:fragment="navigationButtonsLast" class="d-flex justify-content-between">
+    <button type="button" class="btn btn-secondary" onclick="previousStep()">
+        <i class="bi bi-arrow-left"></i> Previous
+    </button>
+    <button type="submit" class="btn btn-success" >
+        Submit <i class="bi bi-check-circle"></i>
+    </button>
+</div>

@@ -1,7 +1,7 @@
 -- Creating Enums
-DROP TYPE IF EXISTS ROLE_ENUM, GENDER_ENUM, DIET_TYPE, WEEKLY_FREQUENCY, GOAL;
+DROP TYPE IF EXISTS APPOINTMENT_STATUS, GENDER_ENUM, DIET_TYPE, WEEKLY_FREQUENCY, GOAL;
 
-CREATE TYPE ROLE_ENUM AS ENUM ('ADMIN', 'CLIENT');
+CREATE TYPE APPOINTMENT_STATUS AS ENUM ('SCHEDULED', 'CANCELED', 'COMPLETED', 'PENDING');
 CREATE TYPE GENDER_ENUM AS ENUM ('MALE', 'FEMALE', 'OTHER');
 CREATE TYPE DIET_TYPE AS ENUM ('BALANCED_DIET', 'VEGETARIAN', 'VEGAN', 'PALEO', 'KETOGENIC', 'GLUTEN_FREE', 'OTHER');
 CREATE TYPE WEEKLY_FREQUENCY AS ENUM ('LESS_THAN_ONCE_A_WEEK', 'ONCE_TO_TWICE_A_WEEK', 'THREE_TO_FOUR_TIMES_A_WEEK', 'ALMOST_EVERY_DAY');
@@ -9,19 +9,57 @@ CREATE TYPE GOAL AS ENUM ('HEALTH_IMPROVEMENT', 'FAT_LOSS', 'WEIGHT_LOSS', 'GAIN
 
 -- Creating DB tables
 
-DROP TABLE IF EXISTS users;
-CREATE TABLE users
+DROP TABLE IF EXISTS client;
+CREATE TABLE client
 (
     id         BIGSERIAL PRIMARY KEY,
     email      VARCHAR(255) NOT NULL UNIQUE,
     password   VARCHAR(255) NOT NULL,
-    role       ROLE_ENUM    NOT NULL,
     created_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT users_email_unique UNIQUE (email)
+    CONSTRAINT client_email_unique UNIQUE (email)
 );
 
---
+DROP TABLE IF EXISTS admin;
+CREATE TABLE admin
+(
+    id         BIGSERIAL PRIMARY KEY,
+    email      VARCHAR(255) NOT NULL UNIQUE,
+    password   VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT admin_email_unique UNIQUE (email)
+);
+
+DROP TABLE IF EXISTS appointment;
+CREATE TABLE appointment
+(
+    id               BIGSERIAL PRIMARY KEY,
+    admin_id         BIGINT             NULL,
+    client_id        BIGINT             NULL,
+    appointment_time TIMESTAMP          NOT NULL,
+    status           APPOINTMENT_STATUS NOT NULL DEFAULT 'PENDING',
+    created_at       TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at       TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_appointment_admin FOREIGN KEY (admin_id) REFERENCES admin (id) ON DELETE SET NULL,
+    CONSTRAINT fk_appointment_client FOREIGN KEY (client_id) REFERENCES client (id) ON DELETE SET NULL
+);
+
+DROP TABLE IF EXISTS admin_time_slot;
+CREATE TABLE admin_time_slot
+(
+    id         BIGSERIAL PRIMARY KEY,
+    admin_id   BIGINT    NULL,
+    date       DATE      NOT NULL,
+    start_time TIME      NOT NULL,
+    end_time   TIME      NOT NULL,
+    available  BOOLEAN   NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_admin_admin_time_slot FOREIGN KEY (admin_id) REFERENCES admin (id) ON DELETE SET NULL
+);
+
+-- Questionnaire
 
 DROP TABLE IF EXISTS questionnaire;
 CREATE TABLE questionnaire
@@ -32,7 +70,7 @@ CREATE TABLE questionnaire
     created_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT questionnaire_type_check CHECK (type IN ('INITIAL', 'PROGRESS')),
-    CONSTRAINT fk_questionnaire_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE SET NULL
+    CONSTRAINT fk_questionnaire_user FOREIGN KEY (user_id) REFERENCES client (id) ON DELETE SET NULL
 );
 
 --
@@ -42,9 +80,9 @@ CREATE TABLE demographic
 (
     id               BIGSERIAL PRIMARY KEY,
     questionnaire_id BIGINT       NOT NULL,
-    full_name        varchar(255) NULL,
-    birthday         date         NULL,
-    occupation       varchar(255) NULL,
+    full_name        VARCHAR(255) NOT NULL,
+    birthday         DATE         NOT NULL,
+    occupation       VARCHAR(255) NULL,
     gender           GENDER_ENUM  NOT NULL,
     created_at       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -61,7 +99,7 @@ CREATE TABLE anthropometric
     height              INT           NOT NULL,
     weight              NUMERIC(6, 2) NOT NULL,
     waist_circumference INT           NULL,
-    recent_measures     varchar(255)  NULL,
+    recent_measures     VARCHAR(255)  NULL,
     created_at          TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at          TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_anthropometric_questionnaire FOREIGN KEY (questionnaire_id) REFERENCES questionnaire (id) ON DELETE SET NULL
@@ -96,7 +134,7 @@ CREATE TABLE health_medical
     lack_of_vitamins_or_minerals VARCHAR(255) NULL,
     created_at                   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at                   TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_health_medical_questionnaire FOREIGN KEY (questionnaire_id) REFERENCES questionnaire (id)
+    CONSTRAINT fk_health_medical_questionnaire FOREIGN KEY (questionnaire_id) REFERENCES questionnaire (id) ON DELETE SET NULL
 );
 
 --
@@ -157,9 +195,17 @@ CREATE TABLE nutrition_goals
 (
     id                   BIGSERIAL PRIMARY KEY,
     questionnaire_id     BIGINT       NOT NULL,
-    goal                 GOAL         NOT NULL,
     timeframe_to_achieve VARCHAR(255) NULL,
     created_at           TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at           TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_user_goals_questionnaire FOREIGN KEY (questionnaire_id) REFERENCES questionnaire (id) ON DELETE SET NULL
+);
+
+DROP TABLE IF EXISTS nutrition_goal;
+CREATE TABLE nutrition_goal
+(
+    nutrition_goals_id BIGINT NOT NULL,
+    goal               GOAL   NOT NULL,
+    CONSTRAINT nutrition_goal_pkey PRIMARY KEY (nutrition_goals_id, goal),
+    CONSTRAINT fk_nutrition_goals FOREIGN KEY (nutrition_goals_id) REFERENCES nutrition_goals (id) ON DELETE CASCADE
 );
