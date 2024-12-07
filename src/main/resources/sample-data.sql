@@ -11,23 +11,23 @@ VALUES ('admin1@example.com', 'adminpass1', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP
        ('admin2@example.com', 'adminpass2', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- Sample data for appointments
-INSERT INTO appointment (admin_id, client_id, appointment_time, status, created_at, updated_at)
-VALUES (1, 1, '2024-10-30 09:00:00', 'SCHEDULED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (1, 2, '2024-10-30 11:00:00', 'COMPLETED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (2, 1, '2024-10-30 10:00:00', 'PENDING', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (2, 3, '2024-10-31 14:00:00', 'CANCELED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO appointment (admin_id, client_id, appointment_start, appointment_end, status, created_at, updated_at)
+VALUES (1, 1, '2024-10-30 09:00:00', '2024-10-30 09:30:00', 'SCHEDULED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (1, 2, '2024-10-30 11:00:00', '2024-10-30 11:30:00', 'COMPLETED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (2, 1, '2024-10-30 10:00:00', '2024-10-30 10:30:00', 'PENDING', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (2, 3, '2024-10-31 14:00:00', '2024-10-31 14:30:00', 'CANCELED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
--- Sample data for admin calendar
-INSERT INTO admin_time_slot (admin_id, date, start_time, end_time, available, created_at, updated_at)
+-- Sample data for admin_availability
+INSERT INTO admin_availability (admin_id, date, start_time, end_time, available, created_at, updated_at)
 VALUES (1, '2024-10-30', '09:00', '17:00', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        (1, '2024-10-30', '11:00', '13:00', FALSE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
        (2, '2024-10-31', '10:00', '15:00', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- Sample data for questionnaire
-INSERT INTO questionnaire (user_id, type, created_at, updated_at)
-VALUES (1, 'INITIAL', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (2, 'INITIAL', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-       (3, 'PROGRESS', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO questionnaire (user_id, type, status, created_at, updated_at)
+VALUES (1, 'INITIAL', 'RECEIVED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (2, 'INITIAL', 'RECEIVED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+       (3, 'PROGRESS', 'RECEIVED', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- Sample data for demographic
 INSERT INTO demographic (questionnaire_id, full_name, birthday, occupation, gender, created_at, updated_at)

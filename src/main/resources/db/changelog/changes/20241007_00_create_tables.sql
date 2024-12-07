@@ -1,6 +1,8 @@
 -- Creating Enums
 DROP TYPE IF EXISTS APPOINTMENT_STATUS, GENDER_ENUM, DIET_TYPE, WEEKLY_FREQUENCY, GOAL;
 
+CREATE TYPE QUESTIONNAIRE_STATUS AS ENUM ('RECEIVED', 'VIEWED', 'COMPLETED');
+CREATE TYPE QUESTIONNAIRE_TYPE AS ENUM ('INITIAL', 'PROGRESS');
 CREATE TYPE APPOINTMENT_STATUS AS ENUM ('SCHEDULED', 'CANCELED', 'COMPLETED', 'PENDING');
 CREATE TYPE GENDER_ENUM AS ENUM ('MALE', 'FEMALE', 'OTHER');
 CREATE TYPE DIET_TYPE AS ENUM ('BALANCED_DIET', 'VEGETARIAN', 'VEGAN', 'PALEO', 'KETOGENIC', 'GLUTEN_FREE', 'OTHER');
@@ -34,19 +36,20 @@ CREATE TABLE admin
 DROP TABLE IF EXISTS appointment;
 CREATE TABLE appointment
 (
-    id               BIGSERIAL PRIMARY KEY,
-    admin_id         BIGINT             NULL,
-    client_id        BIGINT             NULL,
-    appointment_time TIMESTAMP          NOT NULL,
-    status           APPOINTMENT_STATUS NOT NULL DEFAULT 'PENDING',
-    created_at       TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at       TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    id                BIGSERIAL PRIMARY KEY,
+    admin_id          BIGINT             NULL,
+    client_id         BIGINT             NULL,
+    appointment_start TIMESTAMP          NOT NULL,
+    appointment_end   TIMESTAMP          NOT NULL,
+    status            APPOINTMENT_STATUS NOT NULL DEFAULT 'PENDING',
+    created_at        TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at        TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_appointment_admin FOREIGN KEY (admin_id) REFERENCES admin (id) ON DELETE SET NULL,
     CONSTRAINT fk_appointment_client FOREIGN KEY (client_id) REFERENCES client (id) ON DELETE SET NULL
 );
 
-DROP TABLE IF EXISTS admin_time_slot;
-CREATE TABLE admin_time_slot
+DROP TABLE IF EXISTS admin_availability;
+CREATE TABLE admin_availability
 (
     id         BIGSERIAL PRIMARY KEY,
     admin_id   BIGINT    NULL,
@@ -56,7 +59,7 @@ CREATE TABLE admin_time_slot
     available  BOOLEAN   NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_admin_admin_time_slot FOREIGN KEY (admin_id) REFERENCES admin (id) ON DELETE SET NULL
+    CONSTRAINT fk_admin_admin_availability FOREIGN KEY (admin_id) REFERENCES admin (id) ON DELETE SET NULL
 );
 
 -- Questionnaire
@@ -65,11 +68,11 @@ DROP TABLE IF EXISTS questionnaire;
 CREATE TABLE questionnaire
 (
     id         BIGSERIAL PRIMARY KEY,
-    user_id    BIGINT      NULL,
-    type       VARCHAR(20) NOT NULL,
-    created_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT questionnaire_type_check CHECK (type IN ('INITIAL', 'PROGRESS')),
+    user_id    BIGINT               NULL,
+    type       QUESTIONNAIRE_TYPE   NOT NULL,
+    status     QUESTIONNAIRE_STATUS NOT NULL,
+    created_at TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP            NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_questionnaire_user FOREIGN KEY (user_id) REFERENCES client (id) ON DELETE SET NULL
 );
 
