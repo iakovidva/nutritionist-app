@@ -9,14 +9,112 @@
     <!-- Your custom CSS (optional) -->
     <link rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 bg-light">
+<!-- Header Section -->
 <div th:insert="~{fragments/header :: header}"></div>
-<main class="flex-grow-1 container text-center my-5">
 
-    <h1 th:text="${message}">This is a default message</h1>
-    <a th:href="@{/questionnaire}" class="btn btn-primary">Go to questionnaire!</a>
+<!-- Hero Section -->
+<header class="bg-primary text-white py-5">
+    <div class="container text-center">
+        <h1 class="display-4" th:text="${message}">Welcome to Our Platform</h1>
+        <p class="lead">Discover seamless scheduling and personalized experiences.</p>
+        <a th:href="@{/questionnaire}" class="btn btn-lg btn-light mt-3">Get Started</a>
+    </div>
+</header>
+
+<!-- Features Section -->
+<main class="flex-grow-1 container my-5">
+    <section class="row text-center g-4">
+        <!-- Placeholder for Feature 1 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <i class="bi bi-calendar-check display-3 text-primary"></i>
+                    <h5 class="card-title mt-3">Easy Scheduling</h5>
+                    <p class="card-text">Quickly find available time slots that fit your needs.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Placeholder for Feature 2 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <i class="bi bi-person-fill display-3 text-primary"></i>
+                    <h5 class="card-title mt-3">Personalized Profiles</h5>
+                    <p class="card-text">Tailor your experience with customized admin preferences.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Placeholder for Feature 3 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <i class="bi bi-speedometer2 display-3 text-primary"></i>
+                    <h5 class="card-title mt-3">Fast and Reliable</h5>
+                    <p class="card-text">Experience a smooth and hassle-free booking process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="my-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img th:src="@{/images/about-us.jpg}" alt="About Us" class="img-fluid rounded shadow-sm">
+            </div>
+            <div class="col-md-6 text-center text-md-start">
+                <h2>About Us</h2>
+                <p class="lead">We are dedicated to making scheduling easier for both admins and users. Our platform is built with simplicity and reliability in mind, ensuring your appointments are always on track.</p>
+                <a th:href="@{/about}" class="btn btn-primary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Testimonial Carousel Section -->
+    <section class="my-5">
+        <h2 class="text-center mb-4">What Our Users Say</h2>
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <!-- Testimonial 1 -->
+                <div class="carousel-item active">
+                    <div class="text-center">
+                        <p class="lead">"This platform has completely streamlined our scheduling process. Highly recommend!"</p>
+                        <p>- User 1</p>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="carousel-item">
+                    <div class="text-center">
+                        <p class="lead">"Fast, intuitive, and reliable. I couldn’t ask for more."</p>
+                        <p>- User 2</p>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="carousel-item">
+                    <div class="text-center">
+                        <p class="lead">"Great experience from start to finish. Support is amazing."</p>
+                        <p>- User 3</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
 </main>
-<div th:replace="~{fragments/footer :: footer}"></div>
+
+<!-- Footer Section -->
+<div th:insert="~{fragments/footer :: footer}"></div>
+
+<!-- JavaScript -->
 <script th:src="@{/js/bootstrap/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

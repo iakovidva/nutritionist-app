@@ -1,19 +1,104 @@
+/* === Theme Variables === */
+:root {
+    --primary-color: #3F51B5;
+    --secondary-color: #C5CAE9;
+    --background-color: #EEF1F5;
+    --accent-color: #303F9F;
+    --text-color: #4A4A4A;
+}
+
+/* === General Styles === */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* === Buttons === */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* === Navbar === */
+.navbar {
+    background-color: var(--accent-color);
+}
+
+/* === Cards === */
+.card {
+    background-color: var(--background-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.card-title {
+    color: var(--primary-color);
+}
+
+.card-text {
+    color: var(--text-color);
+}
+
+/* === Hero Section === */
+header {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+header .display-4 {
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+/* === Testimonial Carousel === */
+.carousel-inner {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.carousel-indicators .active {
+    background-color: var(--primary-color);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(50%);
+}
+
+/* === Section Titles === */
+h2 {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* === Form Enhancements === */
 .step {
-    display: none; /* Hide all steps by default */
+    display: none;
 }
 
 .step.active {
-    display: block; /* Show the active step */
-}
-
-body {
-    background: linear-gradient(to right, #e0f7fa, #b2ebf2);
-    background-attachment: fixed;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: #333;
+    display: block;
 }
 
 .is-invalid {
-    border-color: #dc3545; /* Bootstrap's red color for invalid feedback */
-    background-color: #d7e0f8; /* Light red background for better visibility */
+    border-color: #dc3545;
+    background-color: #d7e0f8;
 }
